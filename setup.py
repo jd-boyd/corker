@@ -1,9 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(name='corker',
-      version='0.1.3test3',
+      version='0.1.3test5',
       description='Another WSGI Framework',
-      long_description=open('README').read(),
       license='BSD',
       author='Joshua D. Boyd',
       author_email='jdboyd@jdboyd.net',
