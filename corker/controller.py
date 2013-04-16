@@ -11,8 +11,9 @@ log = logging.getLogger(__name__)
 
 def route(*args, **kw):
     def m(method):
-        #print "c %r action=%r" % (path, method)
-        method._route = (args, kw)
+        _route = getattr(method, '_route', [])
+        _route.append((args, kw))
+        method._route = _route
         return method
     return m
 
@@ -26,10 +27,11 @@ class BaseController(object):
             for attr_name in dir(cls):
                 attr = getattr(cls, attr_name)
                 if hasattr(attr, '_route'):
-                    (args, kw) = attr._route
-                    kw['action'] = attr_name
-                    print "Map:", args, kw
-                    m.connect(*args, **kw)
+                    for route in attr._route:
+                        (args, kw) = route
+                        kw['action'] = attr_name
+                        print "Map:", args, kw
+                        m.connect(*args, **kw)
 
 
     def __init__(self, request, link, **config):

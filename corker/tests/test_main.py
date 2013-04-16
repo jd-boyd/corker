@@ -8,8 +8,6 @@ from corker.controller import BaseController, route
 from corker.app import Application
 
 class Index(BaseController):
-#    _routes = []
-
     @route('')
     def index(self):
         return Response('Hi index!\n')
