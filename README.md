@@ -9,7 +9,11 @@ This WSGI framework aims to
 
 # INSTALLATION
   
-  pip install corker
+  `pip install corker`
+
+# USAGE
+
+  corker/tests/test_main.py shows basic usage.
 
 # TODO/BUGS
 - Add tests
