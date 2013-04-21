@@ -30,7 +30,7 @@ def test_main():
 
     mapper.connect('bob', '/bob/', controller=bob)
 
-    test_app = Application(mapper) #('./')
+    test_app = Application(mapper)
 
     app = TestApp(test_app)
 
@@ -58,3 +58,18 @@ def test_config():
 
     ret = app.get('/bob/')
     eq_(ret.body, "Bob! {'config': {'DB_URL': 'sqlite://'}}")
+
+def test_config_controller():
+    class Index2(BaseController):
+        @route('view/{item}')
+        def view(self, item):
+            return Response('Hi view %r!\n%r' % (item, self.bdb))
+    mapper = Mapper()
+    Index2.setup_routes(mapper)
+
+    test_app = Application(mapper, bdb={'bdb': 5})
+    app = TestApp(test_app)
+
+    ret = app.get('/view/4')
+    eq_(ret.body, "Hi view u'4'!\n{'bdb': 5}")
+

@@ -17,3 +17,15 @@ def test_double_route():
         pass
 
     eq_(meth._route, [(('fred',), {}), (('bob',), {})])
+
+def test_config():
+    import webob
+
+    class Index(BaseController):
+        @route('')
+        def index(self):
+            return Response('Hi index!\n')
+
+    i = Index({}, '', bdb={'a': 1})
+    print i.bdb
+    eq_(i.bdb, {'a': 1})
