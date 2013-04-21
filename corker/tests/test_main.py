@@ -42,3 +42,19 @@ def test_main():
 
     ret = app.get('/bob/')
     eq_(ret.body, "Bob!")
+
+def test_config():    
+    mapper = Mapper()
+
+    def bob(request, link, **config):
+        def inner():
+            print "C:", config
+            return Response("Bob! %r" % config)
+        return inner
+    mapper.connect('bob', '/bob/', controller=bob)
+
+    test_app = Application(mapper, config={'DB_URL': 'sqlite://'}) #('./')
+    app = TestApp(test_app)
+
+    ret = app.get('/bob/')
+    eq_(ret.body, "Bob! {'config': {'DB_URL': 'sqlite://'}}")
