@@ -1,24 +1,21 @@
-# ABOUT
+![TravisCI Status](https://api.travis-ci.org/jd-boyd/corker.png)
 
-This WSGI framework aims to 
+# About
 
-# REQUIREMENTS
-- Python 2.6 or 2.7
-- Routes
-- WebOb
+I wanted a framework that was based around routes and webob without
+opinionation about database and templating.
 
-# INSTALLATION
+# Installation
   
   `pip install corker`
 
-# USAGE
+# Usage
 
   corker/tests/test_main.py shows basic usage.
 
-# TODO/BUGS
+# TODO/Bugs
 - Add tests
 - Documentation
 
-# COPYRIGHT
-  This is distributed as BSD.  Most copyright is held by Joshua
-  Boyd. 
+# Copyright
+  This is distributed as BSD.  Copyright Joshua Boyd
