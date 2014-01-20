@@ -14,7 +14,7 @@ class Index(BaseController):
 
     @route('view/{item}')
     def view(self, item):
-        return Response('Hi view %r!\n' % item)
+        return Response('Hi view %d!\n' % int(item))
 
 from webtest import TestApp
 from nose.tools import eq_
@@ -35,13 +35,13 @@ def test_main():
     app = TestApp(test_app)
 
     ret = app.get('/view/4')
-    eq_(ret.body, "Hi view u'4'!\n")
+    eq_(ret.body, b"Hi view 4!\n")
 
     ret = app.get('/')
-    eq_(ret.body, "Hi index!\n")
+    eq_(ret.body, b"Hi index!\n")
 
     ret = app.get('/bob/')
-    eq_(ret.body, "Bob!")
+    eq_(ret.body, b"Bob!")
 
 def test_config():    
     mapper = Mapper()
@@ -57,13 +57,13 @@ def test_config():
     app = TestApp(test_app)
 
     ret = app.get('/bob/')
-    eq_(ret.body, "Bob! {'config': {'DB_URL': 'sqlite://'}}")
+    eq_(ret.body, b"Bob! {'config': {'DB_URL': 'sqlite://'}}")
 
 def test_config_controller():
     class Index2(BaseController):
         @route('view/{item}')
         def view(self, item):
-            return Response('Hi view %r!\n%r' % (item, self.bdb))
+            return Response('Hi view %d!\n%r' % (int(item), self.bdb))
     mapper = Mapper()
     Index2.setup_routes(mapper)
 
@@ -71,5 +71,5 @@ def test_config_controller():
     app = TestApp(test_app)
 
     ret = app.get('/view/4')
-    eq_(ret.body, "Hi view u'4'!\n{'bdb': 5}")
+    eq_(ret.body, b"Hi view 4!\n{'bdb': 5}")
 
