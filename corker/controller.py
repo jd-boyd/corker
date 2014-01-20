@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 
 import logging
 
@@ -30,7 +30,7 @@ class BaseController(object):
                     for route in attr._route:
                         (args, kw) = route
                         kw['action'] = attr_name
-                        print "Map:", args, kw
+                        print("Map:", args, kw)
                         m.connect(*args, **kw)
 
 

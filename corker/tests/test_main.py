@@ -1,6 +1,6 @@
 """ Inspired by: http://blog.ianbicking.org/2010/03/12/a-webob-app-example/
 """
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 from webob import Request, Response, exc
 from routes import Mapper
 
@@ -48,7 +48,7 @@ def test_config():
 
     def bob(request, link, **config):
         def inner():
-            print "C:", config
+            print("C:", config)
             return Response("Bob! %r" % config)
         return inner
     mapper.connect('bob', '/bob/', controller=bob)

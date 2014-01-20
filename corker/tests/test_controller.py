@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 from nose.tools import eq_
 
 from corker.controller import BaseController, route
@@ -27,5 +27,5 @@ def test_config():
             return Response('Hi index!\n')
 
     i = Index({}, '', bdb={'a': 1})
-    print i.bdb
+    print(i.bdb)
     eq_(i.bdb, {'a': 1})

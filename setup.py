@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='corker',
-      version='0.2',
+      version='0.3',
       description='Another WSGI Framework',
       classifiers=["Development Status :: 4 - Beta",
                    "Intended Audience :: Developers",
