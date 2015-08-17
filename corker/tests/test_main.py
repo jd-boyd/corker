@@ -10,7 +10,7 @@ from corker.app import Application
 class Index(BaseController):
     @route('')
     def index(self):
-        return Response('Hi index!\n')
+        return 'Hi index!\n'
 
     @route('view/{item}')
     def view(self, item):
