@@ -82,7 +82,7 @@ print "Serving on port 8000..."
 httpd.serve_forever()
 ```
 
-# TODO/Bugs
+# Bugs/Feature Requests
 
 See [github issues](https://github.com/jd-boyd/corker/issues).
 

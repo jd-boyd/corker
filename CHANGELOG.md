@@ -1,3 +1,9 @@
+<a name="0.5"></a>
+# [0.5](https://github.com/jd-boyd/corker/compare/ver_0.4...ver_0.5) (2015-08-25)
+
+* Add config option to BaseController.setup_routes. This allows per
+  controller configuration and dependencies.
+
 <a name="0.4"></a>
 # [0.4](https://github.com/jd-boyd/corker/compare/ver_0.3...ver_0.4.1) (2015-08-21)
 

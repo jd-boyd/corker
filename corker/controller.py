@@ -19,12 +19,25 @@ def route(*args, **kw):
     return m
 
 
+def config_factory(cls, controller_config):
+    # controller_config comes from the Controller.setup_routes
+    # and takes priority app_config comes from app.
+    def factory(request, **app_config):
+        combo_kw = {}
+        combo_kw.update(app_config)
+        combo_kw.update(controller_config)
+        o = cls(request, **combo_kw)
+        return o
+    return factory
+
+
 class BaseController(object):
     special_vars = ['controller', 'action']
 
     @classmethod
-    def setup_routes(cls, mapper, prefix='/'):
-        with mapper.submapper(controller=cls, path_prefix=prefix) as m:
+    def setup_routes(cls, mapper, prefix='/', config={}):
+        with mapper.submapper(controller=config_factory(cls, config),
+                              path_prefix=prefix) as m:
             for attr_name in dir(cls):
                 attr = getattr(cls, attr_name)
                 if hasattr(attr, '_route'):
