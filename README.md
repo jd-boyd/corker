@@ -7,8 +7,10 @@ I wanted a framework that was based around
 [webob](http://webob.org/) without opinionation about database and
 templating.
 
+Some of the specifics of this are inspired/copied from: http://www.ianbicking.org/blog/2010/03/12/a-webob-app-example/index.html
+
 # Installation
-  
+
   `pip install corker`
 
 # Usage
@@ -80,7 +82,7 @@ httpd = make_server('', 8000, example_app)
 print "Serving on port 8000..."
 httpd.serve_forever()
 ```
- 
+
 
 # TODO/Bugs
 

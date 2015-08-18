@@ -1,4 +1,4 @@
-""" Inspired by: http://blog.ianbicking.org/2010/03/12/a-webob-app-example/
+""" Inspired by: http://www.ianbicking.org/blog/2010/03/12/a-webob-app-example/index.html
 """
 from __future__ import absolute_import, print_function
 from webob import Request, Response, exc
