@@ -26,6 +26,6 @@ def test_config():
         def index(self):
             return Response('Hi index!\n')
 
-    i = Index({}, '', bdb={'a': 1})
+    i = Index({}, bdb={'a': 1})
     print(i.bdb)
     eq_(i.bdb, {'a': 1})

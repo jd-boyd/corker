@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='corker',
-      version='0.3',
+      version='0.4',
       description='Another WSGI Framework',
       classifiers=["Development Status :: 4 - Beta",
                    "Intended Audience :: Developers",
@@ -20,7 +20,7 @@ setup(name='corker',
       author_email='jdboyd@jdboyd.net',
       url='https://github.com/jd-boyd/corker',
       packages=find_packages(),
-      package_data={'': ['README', 'LICENSE.txt']},
+      package_data={'': ['README.md', 'LICENSE.txt']},
       install_requires=['webob', 'routes'],
       tests_require=['nose', 'webtest'],
      )
