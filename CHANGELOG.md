@@ -1,5 +1,5 @@
 <a name="0.4"></a>
-# [0.4 WIP](https://github.com/jd-boyd/corker/compare/ver_0.3...master) (2015-08-xx)
+# [0.4](https://github.com/jd-boyd/corker/compare/ver_0.3...ver_0.4.1) (2015-08-21)
 
 * Python 3.3+ support is complete.
 * Add tox testing to easy local cross version testing.
