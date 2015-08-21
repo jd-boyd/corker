@@ -34,9 +34,8 @@ class BaseController(object):
                         m.connect(*args, **kw)
 
 
-    def __init__(self, request, link, **config):
+    def __init__(self, request, **config):
         self.request = request
-        self.link = link
         for name, value in config.items():
             setattr(self, name, value)
 
@@ -48,4 +47,4 @@ class BaseController(object):
         for attr in self.special_vars:
             if attr in kwargs:
                 del kwargs[attr]
-        return getattr(self, action)(**kwargs)
+        return getattr(self, action)(self.request, **kwargs)

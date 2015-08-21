@@ -24,5 +24,6 @@ class Application(object):
         match, route = results
         link = URLGenerator(self.map, req.environ)
         req.urlvars = ((), match)
-        controller = match['controller'](req, link, **self.config)
+        req.link = link
+        controller = match['controller'](req, **self.config)
         return controller()
