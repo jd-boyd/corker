@@ -9,6 +9,7 @@ from webob.dec import wsgify
 
 log = logging.getLogger(__name__)
 
+
 def route(*args, **kw):
     def m(method):
         _route = getattr(method, '_route', [])
