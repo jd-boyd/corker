@@ -44,7 +44,7 @@ def test_main():
     ret = app.get('/bob/')
     eq_(ret.body, b"Bob!")
 
-def test_config():
+def test_app_config():
     mapper = Mapper()
 
     def bob(request, **config):
@@ -65,18 +65,40 @@ def test_config_controller():
     class Index2(BaseController):
         @route('view/{item}')
         def view(self, request, item):
-            return Response('Hi view %d!\n%r' % (int(item), self.bdb))
-    mapper = Mapper()
-    Index2.setup_routes(mapper)
+            return Response('Hi view %d!\n%r' % (int(item), self.abc))
 
-    test_app = Application(mapper, bdb={'bdb': 5})
+    mapper = Mapper()
+    Index2.setup_routes(mapper, config={'abc': 4})
+
+    test_app = Application(mapper)
     app = TestApp(test_app)
 
     ret = app.get('/view/4')
-    eq_(ret.body, b"Hi view 4!\n{'bdb': 5}")
+    eq_(ret.body, b"Hi view 4!\n4")
 
 
-def test_config_controller_2():
+def test_alt_config_controller():
+    class Index2(BaseController):
+        def __init__(self, request, abc):
+            self.request = request
+            self.abc = abc
+
+        @route('view/{item}')
+        def view(self, request, item):
+            return Response('Hi view %d!\n%r' % (int(item), self.abc))
+
+    mapper = Mapper()
+    Index2.setup_routes(mapper, config={'abc': 4})
+
+    test_app = Application(mapper)
+    app = TestApp(test_app)
+
+    ret = app.get('/view/4')
+    eq_(ret.body, b"Hi view 4!\n4")
+
+
+def test_app_config_controller():
+    # Test both config through application and through setup_routes.
     class Index2(BaseController):
         @route('view/{item}')
         def view(self, request, item):

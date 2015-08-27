@@ -61,14 +61,19 @@ class Index(BaseController):
         return 'Hi view %d!\n' % int(item)
 
 class Sub(BaseController):
+    def __init__(self, request, arg1):
+        self.request = request
+        self.arg1 = arg1
+
     @route('')
     def index(self, request):
-        return Response('Hi sub!\n')
+        return Response('Hi sub!\n' + self.arg1)
 
 mapper = Mapper()
 Index.setup_routes(mapper)
 with mapper.submapper(path_prefix='/sub') as sub:
-  Sub.setup_routes(sub)
+  Sub.setup_routes(sub, config={"arg1": "arg string"})
+
 example_app = Application(mapper)
 
 # At that point `example_app` is a wsgi app ready to be mounted by the
