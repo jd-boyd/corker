@@ -44,9 +44,7 @@ class BaseController(object):
                     for route in attr._route:
                         (args, kw) = route
                         kw['action'] = attr_name
-                        print("Map:", args, kw)
                         m.connect(*args, **kw)
-
 
     def __init__(self, request, **config):
         self.request = request

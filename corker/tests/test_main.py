@@ -111,3 +111,42 @@ def test_app_config_controller():
 
     ret = app.get('/view/4')
     eq_(ret.body, b"Hi view 4!\n{'bdb': 5}\n4")
+
+
+def test_redirect():
+    mapper = Mapper()
+    mapper.redirect('/foo', '/bar',
+                    _redirect_code="301 Moved Permanently")
+
+    test_app = Application(mapper)
+
+    app = TestApp(test_app)
+
+    response = app.get('/foo')
+
+    eq_(response.status, '301 Moved Permanently')
+    eq_(response.location, 'http://localhost/bar')
+
+
+def test_bad_route():
+    mapper = Mapper()
+
+    mapper.connect('foo', '/foo')
+
+    test_app = Application(mapper)
+
+    app = TestApp(test_app)
+
+    app.get('/foo', status=404)
+
+
+def test_not_found():
+    mapper = Mapper()
+
+    mapper.connect('foo', '/foo')
+
+    test_app = Application(mapper)
+
+    app = TestApp(test_app)
+
+    app.get('/bar', status=404)
