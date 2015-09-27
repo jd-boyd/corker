@@ -1,3 +1,8 @@
+<a name="0.6"></a>
+# [0.6](https://github.com/jd-boyd/corker/compare/ver_0.5...ver_0.6) (2015-09-27)
+
+* Add support for redirect routes.
+
 <a name="0.5"></a>
 # [0.5](https://github.com/jd-boyd/corker/compare/ver_0.4...ver_0.5) (2015-08-25)
 
