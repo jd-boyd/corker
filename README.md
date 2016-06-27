@@ -9,6 +9,17 @@ templating.
 
 Some of the specifics of this are inspired/copied from: http://www.ianbicking.org/blog/2010/03/12/a-webob-app-example/index.html
 
+This framework intentionally lacks features that will be found in
+other frameworks, such as authentication, session management or CSRF
+protection.  Features that are not implemented are skipped because it
+is felt that they can adequately be taken care of with WSGI middleware
+placed in front of corker and there are either good implementations,
+or they seem trivial.  Additiomally, it is possible that I'm not
+adequarelt aware of or convinced of the features. Thoughts and
+recommendations on gaining those features will be documented in the
+OPINIONS.md file.  If you still have questions or think I'm wrong,
+please feel free to email me or open an issue.
+
 # Installation
 
   `pip install corker`
