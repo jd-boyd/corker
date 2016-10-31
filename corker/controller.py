@@ -3,14 +3,17 @@ from __future__ import absolute_import, print_function
 import logging
 
 from routes import Mapper
-from routes.util import URLGenerator
-from webob import Request, Response, exc
+from webob import exc
 from webob.dec import wsgify
 
 log = logging.getLogger(__name__)
 
 
 def route(*args, **kw):
+    """Route decorator.  
+
+    Use to decorate methods in children of BaseController
+    """
     def m(method):
         _route = getattr(method, '_route', [])
         _route.append((args, kw))
@@ -41,8 +44,8 @@ class BaseController(object):
             for attr_name in dir(cls):
                 attr = getattr(cls, attr_name)
                 if hasattr(attr, '_route'):
-                    for route in attr._route:
-                        (args, kw) = route
+                    for attr_route in attr._route:
+                        (args, kw) = attr_route
                         kw['action'] = attr_name
                         m.connect(*args, **kw)
 

@@ -1,6 +1,9 @@
 """ Inspired by:
-        http://www.ianbicking.org/blog/2010/03/12/a-webob-app-example/index.html
+    http://www.ianbicking.org/blog/2010/03/12/a-webob-app-example/index.html
 """
+
+# pylint: disable=missing-docstring,unused-argument,no-self-use,no-member
+
 from __future__ import absolute_import, print_function
 from webob import Request, Response, exc
 from routes import Mapper
@@ -54,7 +57,7 @@ def test_app_config():
         return inner
     mapper.connect('bob', '/bob/', controller=bob)
 
-    test_app = Application(mapper, config={'DB_URL': 'sqlite://'}) #('./')
+    test_app = Application(mapper, config={'DB_URL': 'sqlite://'}) 
     app = TestApp(test_app)
 
     ret = app.get('/bob/')

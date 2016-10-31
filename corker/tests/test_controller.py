@@ -1,3 +1,5 @@
+# pylint: disable=missing-docstring,no-member
+
 from __future__ import absolute_import, print_function
 from nose.tools import eq_
 
