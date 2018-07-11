@@ -7,7 +7,8 @@ I wanted a framework that was based around
 [webob](http://webob.org/) without opinionation about database and
 templating.
 
-Some of the specifics of this are inspired/copied from: http://www.ianbicking.org/blog/2010/03/12/a-webob-app-example/index.html
+Some of the specifics of this are inspired/copied from:
+http://www.ianbicking.org/blog/2010/03/12/a-webob-app-example/index.html
 
 # Installation
 
@@ -92,4 +93,5 @@ httpd.serve_forever()
 See [github issues](https://github.com/jd-boyd/corker/issues).
 
 # Copyright
-  This is distributed as BSD.  Copyright Joshua D. Boyd
+
+This is distributed as BSD.  Copyright Joshua D. Boyd
